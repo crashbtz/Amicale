@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo php app/console doctrine:schema:update --dump-sql

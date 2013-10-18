@@ -1,0 +1,23 @@
+{% for type, flashMessages in app.session.flashbag.all() %}
+    {% for flashMessage in flashMessages %}
+        <div class="flash-{{ type }}">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+{% endfor %}
+{{ include(render_entity,{ entities: entities }) }}
+
+
+<div class="modal hide"  id="modal-confirm">
+    <div class="modal-header">
+       <a class="close" data-dismiss="modal">×</a>
+      <h3>Suppression</h3>
+    </div>
+    <div class="modal-body">
+      <p>Voulez-vous supprimer cet(te) {{ entity }}.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" id="delete" class="btn btn-primary">Supprimer</a>
+      <a href="#" id="cancel" class="btn">Annuler</a>
+    </div>
+</div>

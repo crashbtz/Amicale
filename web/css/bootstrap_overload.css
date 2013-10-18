@@ -1,0 +1,20 @@
+/*!
+ * Bootstrap v2.3.2
+ *
+ * Surcharge des propriétés initiales css/bootstrap/css/bootstrap.css
+ */
+
+/*
+* line initialse 4793
+*/
+.navbar-inverse .navbar-inner {
+  background-color: #1b1b1b;
+  background-image: -moz-linear-gradient(top, #CC0000, #A81A10);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#CC0000), to(#A81A10));
+  background-image: -webkit-linear-gradient(top, #CC0000, #A81A10);
+  background-image: -o-linear-gradient(top, #CC0000, #A81A10);
+  background-image: linear-gradient(to bottom, #CC0000, #A81A10);
+  background-repeat: repeat-x;
+  border-color: #252525;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
+}

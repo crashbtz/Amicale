@@ -1,0 +1,36 @@
+{% extends "AmicaleAccueilBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Commandes
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets '@AmicaleAccueilBundle/Resources/public/css/commandes/*' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block amicaleaccueil_body %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            {# menu des produits #}
+            <span class="span2" id="menu_commande">
+                {% include "AmicaleAccueilBundle:Commande:menu_commande.html.twig" %}
+            </span>
+
+            {# content des produits #}
+            <span class="span10" id="content_commande">
+                
+            </span>
+        </div>
+    </div>
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@AmicaleAccueilBundle/Resources/public/js/commandes/*' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

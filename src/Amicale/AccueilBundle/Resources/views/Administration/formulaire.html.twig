@@ -1,0 +1,37 @@
+﻿<h3>Formulaire {{ entity }}</h3>
+
+<div class="well">
+    <form method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+            <br>
+          {% if entity == 'Evenement' %}
+            <table id="double_list">
+                <tr>
+                    <td>
+                        <select id="achoisir" multiple="true">
+                            {% for commercant in commercants['achoisir'] %}
+                                <option value="{{ commercant.id }}">{{commercant}}</option>
+                            {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <img id="fleche_droite" src="{{ asset('bundles/amicaleaccueil/images/fleche_droite.png') }}" alt="droite" />
+                            <img id="fleche_gauche" src="{{ asset('bundles/amicaleaccueil/images/fleche_gauche.png') }}" alt="gauche" />
+                        </td>
+                        <td>
+                            <select id="choisit" multiple="true">
+                             {% for commercant in commercants['choisit'] %}
+                                    <option value="{{ commercant.id }}">{{commercant}}</option>
+                            {% endfor %}
+                                </select> 
+                            </td>
+                        </tr>
+                    </table>
+                    <input id="submit" class="btn btn-primary" data-url='{{ path('amicale_administration_save', {'entity' : entity}) }}' {% if id is defined %} data-id = {{ id }} {%endif%} value="Valider" />
+                    <input id="retour" class="btn retour" value="Retour liste" data-url="{{ path('amicale_administration_show', {'entity' : entity}) }}" />
+          {% else %}
+                    <input type="submit" class="btn btn-primary" value="Valider" />
+                    <input class="btn retour" value="Retour liste" data-url="{{ path('amicale_administration_show', {'entity' : entity}) }}" />
+          {% endif %}          
+                </form>
+            </div>

@@ -1,0 +1,7 @@
+parameters:
+#    amicale_accueil.example.class: Amicale\AccueilBundle\Example
+
+services:
+#    amicale_accueil.example:
+#        class: %amicale_accueil.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

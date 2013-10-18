@@ -1,0 +1,53 @@
+security:
+    encoders:
+        Amicale\UserBundle\Entity\User: sha512
+        #FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        chain_provider:
+            chain:
+                providers: [fos_userbundle, fr3d_ldapbundle]
+
+        fr3d_ldapbundle:
+            id: fr3d_ldap.security.user.provider
+
+        fos_userbundle:
+            id: fos_user.user_manager
+        
+        main:
+            id: fos_user.user_provider.username
+            
+        in_memory:
+            memory:
+                users:
+                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+         
+        main:
+            pattern:   ^/
+            anonymous: true
+            fr3d_ldap:  ~
+            form_login:
+                provider: chain_provider
+                csrf_provider: form.csrf_provider
+                always_use_default_target_path: true
+                default_target_path: /accueil
+            logout:                     #a preciser sinon /logout ne sera jamais intercepte par le composant Security
+                path: /logout           #url de deconnexion gerer par le composant Security
+                target: /accueil        #route de redirection apres deconnexion
+            remember_me:
+                key:        %secret% # %secret% est un paramètre de parameters.yml
+
+    access_control:
+        - { path: ^/accueil, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/administration, roles: ROLE_ADMIN }

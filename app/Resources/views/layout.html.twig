@@ -1,0 +1,77 @@
+{# app/Resources/views/layout.html.twig #}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>{% block title %}Amicale CHCP{% endblock %}</title>
+
+        {% block stylesheets %}
+            {% stylesheets '../app/Resources/public/css/*' %}
+                <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+            {% endstylesheets %}
+    <!--link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css" /-->
+        <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap_overload.css') }}" type="text/css" />
+        {% endblock %}
+    </head>
+
+    <body>
+        <div class="container">
+            <div id="header">
+                <div id="bandeau"></div>
+                <div id="menu">
+                    <!-- Barre de navigation -->
+                    <div class="navbar navbar-inverse">
+                        <div class="navbar-inner">
+                            <a class="brand" href="{{ path('amicale_accueil_homepage') }}">Amicale CHCP</a>
+                            <!-- Structure du menu -->
+                            <ul class="nav">
+                                <li class="active accueil"><a href="{{ path('amicale_accueil_homepage') }}">Accueil</a></li>
+                                <li class="produits"><a href="{{ path('amicale_produit_index') }}">Produits</a></li>
+                                <li class="evenements"><a href="#">Evénements</a></li>
+                                <li class="commandes"><a href="{{ path('amicale_commandes_index') }}">Commandes</a></li>
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <li class="compte"><a href="#">Mon Compte</a></li>
+                                {% endif %}
+                                {% if is_granted("ROLE_ADMIN") %}
+                                    <li class="administration"><a href="{{ path('amicale_administration') }}">Administration</a></li>
+                                {% endif %}
+                            </ul>
+                            <ul class="nav right">
+                                <li>
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                        <a href="{{ path('fos_user_security_logout') }}"><span>Connecté en tant que {{ app.user.username }} -</span>Déconnexion</a>
+                                    {% else %}
+                                                <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                
+            </div>
+                
+            <div id="center">
+                {% block body %}
+                {% endblock %}
+            </div>
+
+                <hr>
+
+                <div id="footer">
+                    <p>The sky's the limit © 2012 and beyond.</p>
+                </div>
+            </div>
+
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('js/jquery-2.0.2.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+        {% endblock %}
+        </body>
+    </html>

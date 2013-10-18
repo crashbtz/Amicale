@@ -1,0 +1,50 @@
+{% extends "AmicaleAccueilBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Administration
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets '@AmicaleAccueilBundle/Resources/public/css/administration/*' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
+
+{% block amicaleaccueil_body %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        {# menu de l'administration #}
+        <div class="span2" id="menu_admin">
+            {% include "AmicaleAccueilBundle:Administration:menu_administration.html.twig" %}
+        </div>
+            
+        {# content de l'administration #}
+        <div class="span10" id="content_admin">
+            {% if entity is defined %}
+                <div>
+                    {% if type == 'show' %}
+                        <h2>{{ entity }}</h2>
+                        <div id="new"><a href="{{ path('amicale_administration_new', {'entity': entity, 'commercants': commercants}) }}"><h4>Nouveau</h4></a></div>
+                        {% include "AmicaleAccueilBundle:Administration:show.html.twig" %}
+                    {% elseif type == 'new' %}
+                            {% include "AmicaleAccueilBundle:Administration:new.html.twig" %}
+                    {% endif %}
+                </div>
+            {% else %}
+
+                    Administration
+
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@AmicaleAccueilBundle/Resources/public/js/administration/*' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

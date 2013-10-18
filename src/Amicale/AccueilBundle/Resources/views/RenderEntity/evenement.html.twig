@@ -1,0 +1,31 @@
+<div class="span9">
+    <table class="table table-striped paginated text-center">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Détail</th>
+                <th>Modifier / Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evenement in entities %}
+                <tr>
+                    <td>{{ evenement.titre }}</td>
+                    <td>{{ evenement.detail }}</td>
+                    <td>                        
+                        <a class="edit" data-url="{{ path('amicale_administration_edit', {'entity' : entity, 'id': evenement.id}) }}" href="#">
+                            <img src="{{ asset('bundles/amicaleaccueil/images/modifier.png') }}" alt="modifier" />
+                        </a>
+                        &nbsp;/&nbsp;
+                        <a class="delete" data-url="{{ path('amicale_administration_delete', {'entity' : entity, 'id': evenement.id}) }}" href="#">
+                            <img src="{{ asset('bundles/amicaleaccueil/images/supprimer.jpeg') }}" alt="supprimer" />
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}        
+        </tbody>
+    </table>
+</div>  
+<div class="span2">
+    Filtre à faire
+</div>

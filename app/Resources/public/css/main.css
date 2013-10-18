@@ -1,0 +1,49 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+.container{
+/*    width: 100%;
+    margin: auto;*/
+}
+.container #header{
+    width: 100%;
+    border: 1px solid black;
+}
+.container #header #bandeau{
+    width: 100%;
+    height: 150px;
+    background: url("../../images/bandeauCHCP.png") no-repeat;
+}
+.container #header #menu{
+    width: 100%;
+    height: 30px;
+}
+.container #header #menu ul.right{
+    float: right;
+}
+.container #center{
+    margin-top: 15px;
+    /*border: 1px solid black;*/
+}
+/* debut centrage du formulaire de connexion 
+cf vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Ressources/views/Security/login.html.twig*/
+.container #center div.connexion
+{
+    width: 250px;
+    margin: auto;
+}
+.container #center div.connexion span.btn_connexion
+{
+    display: table;
+}
+.container #center div.connexion span.btn_connexion *
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+/*fin centrage du formulaire de connexion */

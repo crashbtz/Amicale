@@ -1,0 +1,8 @@
+#double_list tr td img
+{
+    display: block;
+}
+#double_list tr td img:hover
+{
+    cursor: pointer;
+}

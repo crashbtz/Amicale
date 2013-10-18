@@ -1,0 +1,31 @@
+<div class="span9">
+    <table class="table table-striped paginated text-center">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Catégorie</th>
+                <th>Modifier / Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for typeproduit in entities %}
+                <tr>
+                    <td>{{ typeproduit.nom }}</td>
+                    <td>{{ typeproduit.categorie }}</td>
+                    <td>                        
+                        <a class="edit" data-url="{{ path('amicale_administration_edit', {'entity' : entity, 'id': typeproduit.id}) }}" href="#">
+                            <img src="{{ asset('bundles/amicaleaccueil/images/modifier.png') }}" alt="modifier" />
+                        </a>
+                        &nbsp;/&nbsp;
+                        <a class="delete" data-url="{{ path('amicale_administration_delete', {'entity' : entity, 'id': typeproduit.id}) }}" href="#">
+                            <img src="{{ asset('bundles/amicaleaccueil/images/supprimer.jpeg') }}" alt="supprimer" />
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}        
+        </tbody>
+    </table>
+</div>  
+<div class="span2">
+    Filtre à faire
+</div>

@@ -1,0 +1,17 @@
+{% extends "::layout.html.twig" %}
+ 
+{% block title %}
+  {{ parent() }}
+{% endblock %}
+ 
+{% block body %}
+  {% block amicaleaccueil_body %}
+  {% endblock %} 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@AmicaleAccueilBundle/Resources/public/js/frontend/*' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

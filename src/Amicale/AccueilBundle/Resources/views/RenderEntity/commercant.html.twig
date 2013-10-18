@@ -1,0 +1,39 @@
+<div class="span9">
+    <table class="table table-striped paginated text-center">
+        <thead>
+            <tr>
+                <th>Photo</th>
+                <th>Libellé</th>
+                <th>Téléphone</th>
+                <th>Mail</th>
+                <th>Modifier / Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commercant in entities %}
+                <tr>
+                    <td class="photo"><img
+                            src="{{ asset(commercant.photoPath) }}"
+                            alt="{{ commercant.photoAlt }}"
+                          />
+                    </td>
+                    <td>{{ commercant.libelle }}</td>
+                    <td>{{ commercant.tel }}</td>
+                    <td>{{ commercant.email }}</td>
+                    <td>                        
+                        <a class="edit" data-url="{{ path('amicale_administration_edit', {'entity' : entity, 'id': commercant.id}) }}" href="#">
+                            <img src="{{ asset('bundles/amicaleaccueil/images/modifier.png') }}" alt="modifier" />
+                        </a>
+                        &nbsp;/&nbsp;
+                        <a class="delete" data-url="{{ path('amicale_administration_delete', {'entity' : entity, 'id': commercant.id}) }}" href="#">
+                            <img src="{{ asset('bundles/amicaleaccueil/images/supprimer.jpeg') }}" alt="supprimer" />
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}        
+        </tbody>
+    </table>
+</div>  
+<div class="span2">
+    Filtre à faire
+</div>

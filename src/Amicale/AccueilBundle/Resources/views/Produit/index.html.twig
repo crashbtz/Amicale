@@ -1,0 +1,89 @@
+{% extends "AmicaleAccueilBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Produits
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets '@AmicaleAccueilBundle/Resources/public/css/produits/*' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block amicaleaccueil_body %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            {# menu des produits #}
+            <span class="span2" id="menu_produit">
+                {{ render_esi(controller('AmicaleAccueilBundle:Produit:getMenuProduit')) }}
+            </span>
+
+            {# content des produits #}
+            <span class="span7" id="content_produit">
+                {% include "AmicaleAccueilBundle:Produit:content_produit.html.twig" %}
+            </span>
+                
+            <span class="span3" id="filtre_produit">
+                <div class="well">
+                    <fieldset>
+                        <legend>Filtres</legend>
+                        <select id="typeproduit" multiple="multiple">
+                            {% for typeProduit in typeProduits %}
+                                <option value="{{ typeProduit.id }}" >{{ typeProduit }}</option>
+                            {% endfor %}
+                        </select>
+                        <label>Prix:</label>
+                        <div id="prix"> 
+                            <div class="control-group min">
+                                <label class="control-label" for="min">min</label>
+                                <div class="controls">
+                                  <input type="text" id="min" class="input-mini">
+                                </div>
+                            </div>
+                                &nbsp;
+                            <div class="control-group max">
+                                <label class="control-label" for="max">max</label>
+                                <div class="controls">
+                                  <input type="text" id="max" class="input-mini">
+                                </div>
+                            </div>
+                            <p class="help-inline min"></p>
+                            <p class="help-inline max"></p>
+                        </div>
+                        <button id="filtrer" class="btn btn-small btn-primary pull-right" type="button" data-url="{{ path('amicale_produit_filtrer_ajax') }}" data-idcategorie="{{ id }}" >
+                            Filtrer</button>
+                    </fieldset>
+                </div>
+            </span>
+        </div>
+    </div>
+        
+    <div id="ajout_panier" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3>Commande</h3>
+        </div>
+        <div class="modal-body">
+            <p></p>
+            <div class="control-group quantite">
+                <label class="control-label" for="quantite">Quantité</label>
+                <div class="controls">
+                  <input type="text" id="quantite" class="input-quantite">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-primary">Ajouter au panier</a>
+            <a href="#" class="btn" data-dismiss="modal">Fermer</a>
+        </div>
+    </div>
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@AmicaleAccueilBundle/Resources/public/js/produits/*' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

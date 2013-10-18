@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs nav-stacked">
+    {% for categorie in categories %}
+        <li><a data-id="{{ categorie.id }}" href="{{ path('amicale_produit_index', {'id': categorie.id }) }}">{{ categorie }}</a></li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,49 @@
+amicale_accueil_homepage:
+    pattern:  /accueil
+    defaults: { _controller: AmicaleAccueilBundle:Accueil:index}
+
+################
+#ADMINISTRATION#
+################
+amicale_administration:
+    pattern:  /administration
+    defaults: { _controller: AmicaleAccueilBundle:Administration:index}
+
+amicale_administration_show:
+    pattern:  /administration/show/{entity}
+    defaults: { _controller: AmicaleAccueilBundle:Administration:show}
+
+amicale_administration_new:
+    pattern:  /administration/new/{entity}
+    defaults: { _controller: AmicaleAccueilBundle:Administration:new}
+
+amicale_administration_edit:
+    pattern:  /administration/edit/{entity}.{id}
+    defaults: { _controller: AmicaleAccueilBundle:Administration:edit}
+
+amicale_administration_delete:
+    pattern:  /administration/delete/{entity}.{id}
+    defaults: { _controller: AmicaleAccueilBundle:Administration:delete}
+
+amicale_administration_save:
+    pattern:  /administration/save/{entity}
+    defaults: { _controller: AmicaleAccueilBundle:Administration:save}
+
+##########
+#PRODUITS#
+##########
+amicale_produit_index:
+    pattern:  /produits
+    defaults: { _controller: AmicaleAccueilBundle:Produit:index}
+
+amicale_produit_filtrer_ajax:
+    pattern:  /produitsfiltrer
+    defaults: { _controller: AmicaleAccueilBundle:Produit:filtreProduits}
+
+###########
+#COMMANDES#
+###########
+amicale_commandes_index:
+    pattern:  /commandes
+    defaults: { _controller: AmicaleAccueilBundle:Commande:index}
+  

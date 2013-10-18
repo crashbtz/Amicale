@@ -1,0 +1,10 @@
+#menu_admin ul li a{
+    color: black;
+}
+#content_admin{
+    border: 1px solid black;
+}
+#content_admin #new
+{
+    width: 100px;
+}

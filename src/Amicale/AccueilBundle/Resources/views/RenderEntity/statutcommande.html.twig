@@ -1,0 +1,29 @@
+<div class="span9">
+    <table class="table table-striped paginated text-center">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Modifier / Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for statutcommande in entities %}
+                <tr>
+                    <td>{{ statutcommande.libelle }}</td>
+                    <td>                        
+                        <a class="edit" data-url="{{ path('amicale_administration_edit', {'entity' : entity, 'id': statutcommande.id}) }}" href="#">
+                            <img src="{{ asset('bundles/amicaleaccueil/images/modifier.png') }}" alt="modifier" />
+                        </a>
+                        &nbsp;/&nbsp;
+                        <a class="delete" data-url="{{ path('amicale_administration_delete', {'entity' : entity, 'id': statutcommande.id}) }}" href="#">
+                            <img src="{{ asset('bundles/amicaleaccueil/images/supprimer.jpeg') }}" alt="supprimer" />
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}        
+        </tbody>
+    </table>
+</div>  
+<div class="span2">
+    Filtre à faire
+</div>
