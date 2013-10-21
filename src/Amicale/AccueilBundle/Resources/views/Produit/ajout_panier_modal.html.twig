@@ -1,0 +1,6 @@
+{% for produit in produits %}
+    <span class="span3" title="{{ produit.titre }}">
+        <img src="{{ asset(produit.photoPath) }}" alt="{{ produit.photoAlt }}" />
+        <p>{{ produit.marque }} <br> Prix : {{ produit.prix }} euros <img class="panier" title="Ajouter au panier" src="{{ asset('bundles/amicaleaccueil/images/panier.png') }}" /></p>
+    </span>
+{% endfor %}
