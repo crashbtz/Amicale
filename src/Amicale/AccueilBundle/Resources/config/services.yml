@@ -1,7 +1,8 @@
 parameters:
 #    amicale_accueil.example.class: Amicale\AccueilBundle\Example
+    factory_commande.class: Amicale\AccueilBundle\Factory\CommandeFactory
 
 services:
-#    amicale_accueil.example:
-#        class: %amicale_accueil.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    amicale_new_commande:
+        class: "%factory_commande.class%"
+        arguments: [ @doctrine.orm.entity_manager, @security.context ]

@@ -22,8 +22,8 @@ class Commande {
     private $id;
 
     /**
-     * @var integer $tel
-     * @ORM\Column(name="tel", type="integer", nullable=true)
+     * @var integer $quantite
+     * @ORM\Column(name="quantite", type="integer", nullable=true)
      */
     private $quantite;
 
@@ -140,7 +140,7 @@ class Commande {
      *
      * @param Amicale\AccueilBundle\Entity\SatutCommande $statutCommande
      */
-    public function setStatutCommande(\Amicale\AccueilBundle\Entity\SatutCommande $statutCommande) {
+    public function setStatutCommande(\Amicale\AccueilBundle\Entity\StatutCommande $statutCommande) {
         $this->statutCommande = $statutCommande;
     }
     

@@ -40,6 +40,10 @@ amicale_produit_filtrer_ajax:
     pattern:  /produitsfiltrer
     defaults: { _controller: AmicaleAccueilBundle:Produit:filtreProduits}
 
+amicale_produit_create_new_commande:
+    pattern:  /produits_create_new_commande
+    defaults: { _controller: AmicaleAccueilBundle:Produit:createNewCommande}
+
 ###########
 #COMMANDES#
 ###########

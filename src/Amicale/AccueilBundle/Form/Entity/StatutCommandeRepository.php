@@ -12,7 +12,5 @@ use Doctrine\ORM\EntityRepository;
  */
 class StatutCommandeRepository extends EntityRepository
 {
-    public function getStatutCommande($param) {
-        
-    }
+    
 }

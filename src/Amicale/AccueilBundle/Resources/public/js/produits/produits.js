@@ -24,7 +24,7 @@ function initFiltrer(){
     $('#filtrer').unbind('click');
     $('#filtrer').on('click', function(){
         //reset des erreurs éventuelles qui auraient pu être déclenchées sur un 1er clic
-        resetErrors();
+        resetErrors('#prix');
         
         //récupere les valeurs
         var multiselect = $('#typeproduit').val();
@@ -42,12 +42,12 @@ function initFiltrer(){
         
         //vérification des valeurs rentrées
         var is_errors = false;
-        if(!is_int(min) && min !==''){
+        if(!is_int(min) || min.length < 1){
             $('#prix div.min').addClass('error');
             $('#prix p.min').text('min n\'est un nombre.');
             is_errors = true;
         }
-        if(!is_int(max) && max !==''){
+        if(!is_int(max) || max.length < 1){
             $('#prix div.max').addClass('error');
             $('#prix p.max').text('max n\'est un nombre.');
             is_errors = true;
@@ -84,6 +84,11 @@ function initFiltrer(){
     });
 }
 
+/**
+ * retourne si chaine est un nombre
+ * @param {type} value
+ * @returns {Boolean}
+ */
 function is_int(value){ 
   if((parseFloat(value) == parseInt(value)) && !isNaN(value)){
       return true;
@@ -92,18 +97,44 @@ function is_int(value){
   } 
 }
 
-function resetErrors(){
-    $('#prix div.min').removeClass('error');
-    $('#prix p.min').text('');
-    $('#prix div.max').removeClass('error');
-    $('#prix p.max').text('');
+function resetErrors(div){
+    $(div+' div.error').removeClass('error');
+    $(div+' p.help-inline').text('');
 }
 
 function initAjoutPanier(){
+    setModal();
+    ajouter();
+}
+
+function setModal(){
     $('#content_produit img.panier').unbind('click');
     $('#content_produit img.panier').on('click', function(){
         var produit = $(this).closest('span').attr('title');
-        $('#ajout_panier div.modal-body p').text('Créer une commade pour le produit '+produit);
+        id_produit = $(this).attr('data-id_produit');
+        resetErrors('#ajout_panier');
+        $('#ajout_panier div.modal-body p.message').text('Créer une commade pour le produit '+produit);
+        $('#quantite').val('');
         $('#ajout_panier').modal('show');
+    });
+}
+
+function ajouter(){
+    $('#ajouter').unbind('click');
+    $('#ajouter').on('click', function(){
+        var quantite = $('#quantite').val();
+        if(!is_int(quantite) || quantite === '0'){
+            $('#ajout_panier div.quantite').addClass('error');
+            $('#ajout_panier p.quantite').text('La quantité doit être un nombre supérieur à zéro.');
+        }
+        else{
+            var url = $(this).attr('data-url');
+            $.post(url,
+                { url: url, id_produit: id_produit, quantite: quantite},
+                function(data){
+                    $('#ajout_panier').modal('hide');
+                }
+            );
+        }        
     });
 }

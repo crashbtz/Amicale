@@ -140,7 +140,7 @@ class Commande {
      *
      * @param Amicale\AccueilBundle\Entity\SatutCommande $statutCommande
      */
-    public function setStatutCommande(\Amicale\AccueilBundle\Entity\SatutCommande $statutCommande) {
+    public function setStatutCommande(\Amicale\AccueilBundle\Entity\StatutCommande $statutCommande) {
         $this->statutCommande = $statutCommande;
     }
     

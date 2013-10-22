@@ -60,25 +60,8 @@
         </div>
     </div>
         
-    <div id="ajout_panier" class="modal hide fade">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3>Commande</h3>
-        </div>
-        <div class="modal-body">
-            <p></p>
-            <div class="control-group quantite">
-                <label class="control-label" for="quantite">Quantité</label>
-                <div class="controls">
-                  <input type="text" id="quantite" class="input-quantite">
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a href="#" class="btn btn-primary">Ajouter au panier</a>
-            <a href="#" class="btn" data-dismiss="modal">Fermer</a>
-        </div>
-    </div>
+    {% include "AmicaleAccueilBundle:Produit:ajout_panier_modal.html.twig" %}
+        
 {% endblock %}
         
 {% block javascripts %}
