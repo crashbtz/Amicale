@@ -92,10 +92,10 @@ class ProduitController extends Controller {
             if ($request->getMethod() == 'POST') {
                 $em->persist($commande);
                 $em->flush();
-                $message = 'success';
+                $message = 'Votre commande a été crée avec succès.';
             }
             else{
-                $message = 'error';
+                $message = 'Une erreur est survenue lors de la création de votre commande.';
             }
             return new Response($message);
         }

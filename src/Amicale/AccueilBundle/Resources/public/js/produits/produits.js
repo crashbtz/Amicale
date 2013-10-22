@@ -42,20 +42,20 @@ function initFiltrer(){
         
         //vérification des valeurs rentrées
         var is_errors = false;
-        if(!is_int(min) || min.length < 1){
+        if(min && !is_int(min)){
             $('#prix div.min').addClass('error');
-            $('#prix p.min').text('min n\'est un nombre.');
+            $('#prix p.min').text('min n\'est pas un nombre.');
             is_errors = true;
         }
-        if(!is_int(max) || max.length < 1){
+        if(max && !is_int(max)){
             $('#prix div.max').addClass('error');
-            $('#prix p.max').text('max n\'est un nombre.');
+            $('#prix p.max').text('max n\'est pas un nombre.');
             is_errors = true;
         }
         if(is_int(min) && is_int(max) && parseInt(min) > parseInt(max)){
             $('#prix div.min').addClass('error');
             $('#prix div.max').addClass('error');
-            $('#prix p.min').text('min doit être inférieur ou égal à max');
+            $('#prix p.min').text('min doit être inférieur ou égal au max');
             is_errors = true;
         }
         
@@ -66,6 +66,7 @@ function initFiltrer(){
             $.post(url,
                 { typeproduits: values_typeproduits, min: min, max: max, id: id},
                 function(data){
+                    alert(data)
                     if(data.length > 0 && data !== 'error'){
                         $('#content_produit').html(data);
                     }
@@ -128,10 +129,20 @@ function ajouter(){
             $('#ajout_panier p.quantite').text('La quantité doit être un nombre supérieur à zéro.');
         }
         else{
+            
             var url = $(this).attr('data-url');
             $.post(url,
                 { url: url, id_produit: id_produit, quantite: quantite},
                 function(data){
+                    if(data.indexOf('erreur') > 0){
+                        $('#content_produit div.message').text(data).css('color', '#F7230C');
+                    }
+                    else{
+                        $('#content_produit div.message').text(data).css('color', '#3AF24B');
+                    }
+                    $('#content_produit div.message').fadeOut(3000, 'linear', function(){
+                        $(this).text('');
+                    });
                     $('#ajout_panier').modal('hide');
                 }
             );

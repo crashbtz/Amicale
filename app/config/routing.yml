@@ -2,6 +2,10 @@ amicale_accueil:
     resource: "@AmicaleAccueilBundle/Resources/config/routing.yml"
     prefix:   /
 
+amicale_user:
+    resource: "@AmicaleUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

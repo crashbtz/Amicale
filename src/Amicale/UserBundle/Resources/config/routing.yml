@@ -1,0 +1,3 @@
+amicale_user_menu_connection:
+    pattern:  /menu_connection
+    defaults: { _controller: AmicaleUserBundle:Security:getMenuConnection}

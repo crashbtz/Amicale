@@ -21,6 +21,19 @@ framework:
     session:
         cookie_lifetime: 1800
 
+#service for connection bootstrap ajax
+services: 
+    amicale_login_success_handler:
+        class:  Amicale\UserBundle\Component\Authentication\Handler\LoginSuccessHandler
+        arguments:  [@router, @security.context]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' } 
+    amicale_logout_success_handler:
+        class:  Amicale\UserBundle\Component\Authentication\Handler\LogoutSuccessHandler
+        arguments:  [@router]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }  
+
 # Twig Configuration
 twig:
     debug:            %kernel.debug%
@@ -59,10 +72,12 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
+    transport: smtp
+    host:      smtp.gmail.com
+    encryption: ssl
+    auth_mode:  login
+    username:  cedric.moncade@gmail.com
+    password:  P@s5w0Rd!
     spool:     { type: memory }
     
 fos_user:

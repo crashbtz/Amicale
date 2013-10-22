@@ -35,11 +35,13 @@ security:
             form_login:
                 provider: chain_provider
                 csrf_provider: form.csrf_provider
+                success_handler: amicale_login_success_handler
                 always_use_default_target_path: true
                 default_target_path: /accueil
             logout:                     #a preciser sinon /logout ne sera jamais intercepte par le composant Security
                 path: /logout           #url de deconnexion gerer par le composant Security
                 target: /accueil        #route de redirection apres deconnexion
+                #success_handler: amicale_logout_success_handler
             remember_me:
                 key:        %secret% # %secret% est un paramètre de parameters.yml
 
