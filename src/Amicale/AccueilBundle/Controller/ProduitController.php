@@ -91,11 +91,17 @@ class ProduitController extends Controller {
             $message = '';
             if ($request->getMethod() == 'POST') {
                 $em->persist($commande);
-                $em->flush();
-                $message = 'Votre commande a été crée avec succès.';
+                $em->flush();                
+                $message = '<div class="alert alert-block alert-info fade in">
+                                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                                <p>Votre commande a été crée avec succès.</p>
+                            </div>';
             }
             else{
-                $message = 'Une erreur est survenue lors de la création de votre commande.';
+                $message = '<div class="alert alert-block alert-danger fade in">
+                                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                                <p>Une erreur est survenue lors de la création de votre commande.</p>
+                            </div>';
             }
             return new Response($message);
         }

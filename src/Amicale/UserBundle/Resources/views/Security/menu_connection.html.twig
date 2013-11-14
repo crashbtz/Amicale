@@ -3,6 +3,7 @@
         <a href="{{ path('fos_user_security_logout') }}"><span>Connecté en tant que {{ app.user.username }} -</span>Déconnexion</a>
     {% else %}
                 <!--a href="{{ path('fos_user_security_login') }}">Connexion</a-->
-        <a href='#' id="open_modal_connexion" >Connexion</a>
+        <a href='#' class="open_modal_connexion" >Connexion</a>
     {% endif %}
+        <input type="hidden" id="is_connected" name="is_connected" value="{{ path('amicale_user_is_connected') }}" >
 </li>

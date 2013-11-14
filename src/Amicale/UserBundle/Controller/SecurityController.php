@@ -80,4 +80,11 @@ class SecurityController extends ContainerAware
     public function getMenuConnectionAction(){
         return $this->container->get('templating')->renderResponse('AmicaleUserBundle:Security:menu_connection.html.twig');
     }
+    
+    public function isConnectedAction(){
+        if ($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return new Response('true');
+        }
+        return new Response('false');
+    }
 }

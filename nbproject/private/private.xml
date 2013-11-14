@@ -4,15 +4,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Resources/views/Administration/formulaire.html.twig</file>
-            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Form/CommandeType.php</file>
-            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Resources/views/Administration/show.html.twig</file>
-            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Resources/views/Produit/ajout_panier_modal.html.twig</file>
+            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Entity/StatutCommandeRepository.php</file>
+            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Controller/CommandeController.php</file>
+            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Resources/views/Commande/menu_commande.html.twig</file>
             <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Controller/ProduitController.php</file>
-            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Resources/public/js/produits/produits.js</file>
-            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Factory/CommandeFactory.php</file>
-            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Controller/AdministrationController.php</file>
-            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Entity/Commande.php</file>
+            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Entity/ProduitRepository.php</file>
+            <file>file:/var/www/Amicale/web/app_dev.php</file>
+            <file>file:/var/www/Amicale/app/AppCache.php</file>
+            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Resources/views/Produit/menu_produit.html.twig</file>
+            <file>file:/var/www/Amicale/app/Resources/views/layout.html.twig</file>
+            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Resources/views/Produit/index.html.twig</file>
+            <file>file:/var/www/Amicale/src/Amicale/AccueilBundle/Resources/views/Commande/index.html.twig</file>
         </group>
     </open-files>
 </project-private>

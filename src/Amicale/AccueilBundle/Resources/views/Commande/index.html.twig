@@ -17,7 +17,8 @@
         <div class="row-fluid">
             {# menu des produits #}
             <span class="span2" id="menu_commande">
-                {% include "AmicaleAccueilBundle:Commande:menu_commande.html.twig" %}
+                {{ render(controller('AmicaleAccueilBundle:Commande:getMenuCommandes')) }}
+                {#% include "AmicaleAccueilBundle:Commande:menu_commande.html.twig" %#}
             </span>
 
             {# content des produits #}

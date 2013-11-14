@@ -1,3 +1,7 @@
 amicale_user_menu_connection:
     pattern:  /menu_connection
     defaults: { _controller: AmicaleUserBundle:Security:getMenuConnection}
+
+amicale_user_is_connected:
+    pattern:  /is_connected
+    defaults: { _controller: AmicaleUserBundle:Security:isConnected}

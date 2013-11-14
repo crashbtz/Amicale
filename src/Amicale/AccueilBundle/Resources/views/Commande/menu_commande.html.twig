@@ -1,5 +1,18 @@
+{% if is_granted("ROLE_ADMIN") %}
+    {{ render(controller('AmicaleUserBundle:Security:getMenuConnection')) }}
+{% else %}
+    {{ render(controller('AmicaleUserBundle:Security:getMenuConnection')) }}
+{% endif %}
+
 <ul class="nav nav-tabs nav-stacked">
     <li><a data-id="" href="{{ path('amicale_commandes_index', {'statut': 'encours' }) }}">En cours</a></li>
     <li><a data-id="" href="{{ path('amicale_commandes_index', {'statut': 'valide' }) }}">Envoyées</a></li>
     <li><a data-id="" href="{{ path('amicale_commandes_index', {'statut': 'close' }) }}">Reçues</a></li>
+</ul>
+
+
+<ul class="nav nav-tabs nav-stacked">
+    {% for categorie in categories %}
+        <li><a data-id="{{ categorie.id }}" href="{{ path('amicale_produit_index', {'id': categorie.id }) }}">{{ categorie }}</a></li>
+    {% endfor %}
 </ul>

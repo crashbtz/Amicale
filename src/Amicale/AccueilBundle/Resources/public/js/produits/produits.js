@@ -66,7 +66,6 @@ function initFiltrer(){
             $.post(url,
                 { typeproduits: values_typeproduits, min: min, max: max, id: id},
                 function(data){
-                    alert(data)
                     if(data.length > 0 && data !== 'error'){
                         $('#content_produit').html(data);
                     }
@@ -81,7 +80,6 @@ function initFiltrer(){
                 }
             );
         }
-        //alert(values_typeproduits+" - "+min+" - "+max);
     });
 }
 
@@ -111,12 +109,22 @@ function initAjoutPanier(){
 function setModal(){
     $('#content_produit img.panier').unbind('click');
     $('#content_produit img.panier').on('click', function(){
-        var produit = $(this).closest('span').attr('title');
-        id_produit = $(this).attr('data-id_produit');
-        resetErrors('#ajout_panier');
-        $('#ajout_panier div.modal-body p.message').text('Créer une commade pour le produit '+produit);
-        $('#quantite').val('');
-        $('#ajout_panier').modal('show');
+        if(isConnected()){
+            var produit = $(this).closest('span').attr('title');
+            id_produit = $(this).attr('data-id_produit');
+            resetErrors('#ajout_panier');
+            $('#ajout_panier div.modal-body p.message').text('Créer une commade pour le produit '+produit);
+            $('#quantite').val('');
+            $('#ajout_panier').modal('show');
+        }
+        else{
+            $('#content_produit div.message').html(
+                '<div class="alert alert-block alert-info fade in">\
+                    <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>\
+                    <p>Vous devez être connecté pour effectuer une commande. <a class="btn btn-default open_modal_connexion" href="#">Connexion</a></p>\
+                </div>');
+            $('#content_produit div.message').alert();
+        }        
     });
 }
 
@@ -135,15 +143,14 @@ function ajouter(){
                 { url: url, id_produit: id_produit, quantite: quantite},
                 function(data){
                     if(data.indexOf('erreur') > 0){
-                        $('#content_produit div.message').text(data).css('color', '#F7230C');
+                        $('#content_produit div.message').html(data);
                     }
                     else{
-                        $('#content_produit div.message').text(data).css('color', '#3AF24B');
+                        $('#content_produit div.message').html(data);
                     }
-                    $('#content_produit div.message').fadeOut(3000, 'linear', function(){
-                        $(this).text('');
-                    });
-                    $('#ajout_panier').modal('hide');
+                    $('#content_produit div.message').alert();
+                    $('#ajout_panier').modal('hide');            
+                    window.setTimeout('hideAllMessage()', 4000);
                 }
             );
         }        
