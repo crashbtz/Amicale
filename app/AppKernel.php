@@ -20,11 +20,6 @@ class AppKernel extends Kernel
             new Amicale\UserBundle\AmicaleUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
 	    //new FR3D\LdapBundle\FR3DLdapBundle(),
-            new Sonata\BlockBundle\SonataBlockBundle(),
-            new Sonata\jQueryBundle\SonatajQueryBundle(),
-            new Sonata\AdminBundle\SonataAdminBundle(),
-            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
